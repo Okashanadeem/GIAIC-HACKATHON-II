@@ -1,55 +1,40 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# GIAIC-HACKATHON-II Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Spec-Driven Development (SDD)
+All development must be driven by specifications. No code will be written without a corresponding, approved spec. Specs must be clear, testable, and follow the project's templates. This principle ensures that all work is aligned with the project goals and that the final product meets the specified requirements.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Phase-Based Progression
+The project will be executed in five distinct phases, as outlined in the hackathon documentation. Each phase must be completed and approved before the next one begins. This ensures a structured and iterative development process, with clear milestones and deliverables at each stage.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. AI-Assisted Implementation
+Claude Code will be the primary tool for generating code based on the specifications. Manual coding is strictly prohibited. The focus is on refining the specs to guide the AI to produce the correct implementation. This aligns with the hackathon's goal of mastering the role of a system architect.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Test-Driven Development (TDD)
+While the AI generates the code, the process must follow TDD principles where applicable. Specifications should define the tests that the generated code must pass. This ensures that the code is not only functionally correct but also robust and reliable.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Clean Code and Architecture
+All code must adhere to clean code principles. The architecture will evolve with each phase, but it must always be well-defined and documented. The project will start with a simple in-memory application and evolve into a cloud-native, event-driven system.
 
-### [PRINCIPLE_6_NAME]
+### VI. Version Control with Git
+All code and documentation will be managed in a Git repository. Commits will be atomic and have clear, descriptive messages. The main branch will be protected, and all changes will be introduced through pull requests that are reviewed and approved.
 
+## Documentation Standards
 
-[PRINCIPLE__DESCRIPTION]
+All documentation, including specs, plans, and reports, will be written in Markdown. The documentation must be clear, concise, and kept up-to-date with the project's progress. A clear and organized documentation structure is crucial for the success of this project.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Development Workflow
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+1.  **Specification:** Create a detailed specification for the feature or phase.
+2.  **Review:** The specification must be reviewed and approved before implementation begins.
+3.  **Implementation:** Use Claude Code to generate the implementation based on the approved spec.
+4.  **Testing:** Verify that the implementation passes all the tests defined in the spec.
+5.  **Integration:** Integrate the new feature into the main project.
+6.  **Deployment:** Deploy the new version of the application as per the phase requirements.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This Constitution is the supreme governing document of this project. Any conflicts with other documents or practices will be resolved in favor of this Constitution. Amendments to this Constitution require a formal proposal, review, and approval process.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0 | **Ratified**: 2025-12-06 | **Last Amended**: 2025-12-06

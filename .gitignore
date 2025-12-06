@@ -1,0 +1,13 @@
+# Environment variables
+.env
+
+# Gemini settings
+.gemini/settings.json
+
+# Python-specific ignores
+.python-version
+__pycache__/
+*.pyc
+*.log
+venv/
+.venv/

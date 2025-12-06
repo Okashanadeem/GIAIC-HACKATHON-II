@@ -208,3 +208,19 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 
 ## Code Standards
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
+
+## Project History
+
+- **Project Initialization:**
+    - Set up the project structure with central planning documents (`central-plan.md`, `central-tasks.md`, `central-implementation.md`).
+    - Established the project's governing principles in `.specify/memory/constitution.md`.
+    - Updated all documentation to replace "Claude Code" with "Gemini CLI" and "CLAUDE.md" with "GEMINI.md".
+- **Phase 1: In-Memory Python Console App:**
+    - Created the `Phase-1` directory to encapsulate all phase-specific work.
+    - Developed detailed plans, tasks, and implementation strategies in `Phase-1/phase-plan.md`, `Phase-1/phase-tasks.md`, and `Phase-1/phase-implementation.md`.
+    - Created specifications for all five core Todo features in `Phase-1/specs/features`.
+    - Implemented the complete console application in `Phase-1/src/main.py`.
+- **Version Control:**
+    - Initialized a Git repository.
+    - Added a remote origin.
+    - Set the main branch to `main`.
