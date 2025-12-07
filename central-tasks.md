@@ -4,23 +4,23 @@ This document outlines the central tasks for the "Evolution of Todo" hackathon p
 
 ## Phase I: In-Memory Python Console App
 
-*   **Task 1.1:** Set up the Python project structure.
-*   **Task 1.2:** Define the specifications for the 5 basic Todo features (Add, Delete, Update, View, Mark Complete).
-*   **Task 1.3:** Implement the 5 basic Todo features using Gemini CLI, driven by the specs.
-*   **Task 1.4:** Create a README.md with setup instructions.
-*   **Task 1.5:** Create a GEMINI.md with instructions for using Gemini CLI.
-*   **Task 1.6:** Verify that the console application meets all the requirements for Phase I.
+*   [x] **Task 1.1:** Set up the Python project structure.
+*   [x] **Task 1.2:** Define the specifications for the 5 basic Todo features (Add, Delete, Update, View, Mark Complete).
+*   [x] **Task 1.3:** Implement the 5 basic Todo features using Gemini CLI, driven by the specs.
+*   [x] **Task 1.4:** Create a README.md with setup instructions.
+*   [x] **Task 1.5:** Create a GEMINI.md with instructions for using Gemini CLI.
+*   [x] **Task 1.6:** Verify that the console application meets all the requirements for Phase I.
 
 ## Phase II: Full-Stack Web Application
 
-*   **Task 2.1:** Set up the monorepo structure with a frontend (Next.js) and backend (FastAPI) folder.
-*   **Task 2.2:** Define the specifications for the RESTful API endpoints.
-*   **Task 2.3:** Implement the backend API using FastAPI and SQLModel.
-*   **Task 2.4:** Set up the Neon Serverless PostgreSQL database.
-*   **Task 2.5:** Implement user authentication using Better Auth.
-*   **Task 2.6:** Implement the frontend interface using Next.js.
-*   **Task 2.7:** Integrate the frontend with the backend API.
-*   **Task 2.8:** Verify that the web application meets all the requirements for Phase II.
+*   [x] **Task 2.1:** Set up the monorepo structure with a frontend (Next.js) and backend (FastAPI) folder.
+*   [x] **Task 2.2:** Define the specifications for the RESTful API endpoints.
+*   [x] **Task 2.3:** Implement the backend API using FastAPI and SQLModel.
+*   [x] **Task 2.4:** Set up the Neon Serverless PostgreSQL database.
+*   [x] **Task 2.5:** Implement user authentication using Better Auth.
+*   [x] **Task 2.6:** Implement the frontend interface using Next.js.
+*   [x] **Task 2.7:** Integrate the frontend with the backend API.
+*   [x] **Task 2.8:** Verify that the web application meets all the requirements for Phase II.
 
 ## Phase III: AI-Powered Todo Chatbot
 
@@ -29,7 +29,7 @@ This document outlines the central tasks for the "Evolution of Todo" hackathon p
 *   **Task 3.3:** Implement the AI agent using the OpenAI Agents SDK.
 *   **Task 3.4:** Integrate the AI agent with the backend.
 *   **Task 3.5:** Implement the chat interface using OpenAI ChatKit.
-*   **Task 3.6:** Verify that the chatbot can manage the Todo list through natural language.
+*   **Task 3.6:** Verify that the chatbot can manage the Tod list through natural language.
 
 ## Phase IV: Local Kubernetes Deployment
 
@@ -39,7 +39,7 @@ This document outlines the central tasks for the "Evolution of Todo" hackathon p
 *   **Task 4.4:** Deploy the application to the Minikube cluster.
 *   **Task 4.5:** Verify that the application is running correctly on the local cluster.
 
-## Phase V: Advanced Cloud Deployment
+<h2>Phase V: Advanced Cloud Deployment</h2>
 
 *   **Task 5.1:** Implement the advanced features (Recurring Tasks, Due Dates & Reminders, etc.).
 *   **Task 5.2:** Implement an event-driven architecture using Kafka.

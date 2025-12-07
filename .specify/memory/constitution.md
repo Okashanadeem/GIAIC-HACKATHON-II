@@ -9,7 +9,7 @@ All development must be driven by specifications. No code will be written withou
 The project will be executed in five distinct phases, as outlined in the hackathon documentation. Each phase must be completed and approved before the next one begins. This ensures a structured and iterative development process, with clear milestones and deliverables at each stage.
 
 ### III. AI-Assisted Implementation
-Claude Code will be the primary tool for generating code based on the specifications. Manual coding is strictly prohibited. The focus is on refining the specs to guide the AI to produce the correct implementation. This aligns with the hackathon's goal of mastering the role of a system architect.
+Gemini CLI will be the primary tool for generating code based on the specifications. Manual coding is strictly prohibited. The focus is on refining the specs to guide the AI to produce the correct implementation. This aligns with the hackathon's goal of mastering the role of a system architect.
 
 ### IV. Test-Driven Development (TDD)
 While the AI generates the code, the process must follow TDD principles where applicable. Specifications should define the tests that the generated code must pass. This ensures that the code is not only functionally correct but also robust and reliable.

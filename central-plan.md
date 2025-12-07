@@ -8,8 +8,8 @@ This document outlines the central plan for the "Evolution of Todo" hackathon pr
 
 The project is divided into five distinct phases, each with its own set of deliverables and technology stack.
 
-*   **Phase I: In-Memory Python Console App:** A simple command-line Todo application that stores tasks in memory.
-*   **Phase II: Full-Stack Web Application:** The console app is transformed into a multi-user web application with a persistent database.
+*   **Phase I: In-Memory Python Console App:** A simple command-line Todo application that stores tasks in memory. (Completed)
+*   **Phase II: Full-Stack Web Application:** The console app is transformed into a multi-user web application with a persistent database. (Completed)
 *   **Phase III: AI-Powered Todo Chatbot:** An AI-powered chatbot is added to manage the Todo list through natural language.
 *   **Phase IV: Local Kubernetes Deployment:** The application is containerized and deployed on a local Kubernetes cluster.
 *   **Phase V: Advanced Cloud Deployment:** The application is deployed to a production-grade Kubernetes cluster on a public cloud, with advanced features like event-driven architecture.
