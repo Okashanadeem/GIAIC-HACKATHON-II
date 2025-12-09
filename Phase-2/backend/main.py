@@ -14,6 +14,7 @@ def create_db_and_tables():
 app = FastAPI()
 
 origins = [
+    "https://giaic-q4-hackathon-ii-phase-2-by-okasha-nadeem-f57nb6uds.vercel.app",
     "http://localhost:3000",
 ]
 
