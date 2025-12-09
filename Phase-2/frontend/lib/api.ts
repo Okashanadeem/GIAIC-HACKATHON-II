@@ -61,7 +61,7 @@ export const deleteTask = async (token: string, id: number): Promise<void> => {
   }
 };
 
-export const loginUser = async (username, password) => {
+export const loginUser = async (username: string, password: string) => {
     const response = await fetch(`${API_URL}/token`, {
         method: 'POST',
         headers: {
@@ -79,7 +79,7 @@ export const loginUser = async (username, password) => {
     return data.access_token;
 };
 
-export const signupUser = async (username, password) => {
+export const signupUser = async (username: string, password: string) => {
     const response = await fetch(`${API_URL}/users`, {
         method: 'POST',
         headers: {

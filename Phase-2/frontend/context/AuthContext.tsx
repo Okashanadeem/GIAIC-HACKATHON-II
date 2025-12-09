@@ -5,8 +5,12 @@ import Cookies from "js-cookie";
 
 const AuthContext = createContext<any>(null);
 
+interface User {
+  username: string;
+}
+
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState(Cookies.get("token"));
 
   useEffect(() => {

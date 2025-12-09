@@ -6,33 +6,34 @@ import TaskList from "@/components/TaskList";
 import { getTasks } from "@/lib/api";
 import withAuth from "@/hoc/withAuth";
 import { useAuth } from "@/context/AuthContext";
+import { Task } from "./types/Task";
 
 function Home() {
   const { token } = useAuth();
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchTasks = async () => {
       if (!token) return;
-      const fetchedTasks = await getTasks(token);
+      const fetchedTasks: Task[] = await getTasks(token);
       setTasks(fetchedTasks);
       setLoading(false);
     };
     fetchTasks();
   }, [token]);
 
-  const handleTaskAdded = (newTask) => {
+  const handleTaskAdded = (newTask: Task) => {
     setTasks((prev) => [...prev, newTask]);
   };
 
-  const handleTaskUpdated = (updatedTask) => {
+  const handleTaskUpdated = (updatedTask: Task) => {
     setTasks((prev) =>
       prev.map((task) => (task.id === updatedTask.id ? updatedTask : task))
     );
   };
 
-  const handleTaskDeleted = (id) => {
+  const handleTaskDeleted = (id: number) => {
     setTasks((prev) => prev.filter((task) => task.id !== id));
   };
 
@@ -50,7 +51,9 @@ function Home() {
         {loading ? (
           <p className="text-gray-500 text-center">Loading tasks...</p>
         ) : tasks.length === 0 ? (
-          <p className="text-gray-500 text-center">No tasks yet. Add your first one!</p>
+          <p className="text-gray-500 text-center">
+            No tasks yet. Add your first one!
+          </p>
         ) : (
           <TaskList
             tasks={tasks}

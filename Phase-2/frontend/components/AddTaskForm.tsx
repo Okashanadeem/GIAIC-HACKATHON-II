@@ -3,28 +3,38 @@
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { addTask } from "@/lib/api";
+import { Task } from "../app/types/Task";
 
-const AddTaskForm = ({ onTaskAdded }) => {
+interface AddTaskFormProps {
+  onTaskAdded: (task: Task) => void;
+}
+
+const AddTaskForm: React.FC<AddTaskFormProps> = ({ onTaskAdded }) => {
   const { token } = useAuth();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (token) {
-      const newTask = await addTask(token, title, description);
-      onTaskAdded(newTask);
-      setTitle("");
-      setDescription("");
-    }
+    if (!token) return;
+
+    const newTask: Task = await addTask(token, title, description);
+    onTaskAdded(newTask);
+    setTitle("");
+    setDescription("");
   };
 
   return (
     <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg mx-auto">
       <form onSubmit={handleSubmit} className="space-y-4">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-white">Add a new task</h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-white">
+          Add a new task
+        </h2>
         <div>
-          <label htmlFor="title" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          <label
+            htmlFor="title"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+          >
             Title
           </label>
           <input
@@ -37,7 +47,10 @@ const AddTaskForm = ({ onTaskAdded }) => {
           />
         </div>
         <div>
-          <label htmlFor="description" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          <label
+            htmlFor="description"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+          >
             Description
           </label>
           <textarea
