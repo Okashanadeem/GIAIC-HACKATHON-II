@@ -26,7 +26,7 @@ app = FastAPI()
 # CORS CONFIG (FINAL & CORRECT)
 # ---------------------------
 origins = [
-    "https://https://giaic-q4-h2-p2.vercel.app",
+    "https://giaic-q4-h2-p2.vercel.app",
     "http://localhost:3000",
 ]
 
