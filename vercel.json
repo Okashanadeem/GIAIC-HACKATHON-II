@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "Phase-2/frontend/package.json",
+      "use": "@vercel/next",
+      "config": {
+        "workspaces": "Phase-2/frontend"
+      }
+    },
+    {
+      "src": "Phase-2/backend/main.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/Phase-2/backend/main.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/Phase-2/frontend/$1"
+    }
+  ]
+}
