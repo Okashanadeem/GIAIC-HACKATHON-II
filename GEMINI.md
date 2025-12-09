@@ -209,7 +209,16 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 ## Code Standards
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
 
+## Gemini Added Memories
+- The current todo list represents the saved context, with all tasks up to and including Phase 5 (User Story 3 - User Authentication) marked as completed.
+- The sign-up and sign-in functionality has been reviewed and confirmed to be working correctly. The .env file has been updated with the correct environment variables for the Hugging Face API. The chatbot has been successfully integrated with the authentication system, ensuring that chat history is now saved per user. All major implementation tasks for the project are complete, with only a manual accessibility review (T063) remaining.
+- The project's backend is stable, with all import, validation, and hashing issues resolved, and OpenAI replaced by Hugging Face. The Docusaurus frontend now builds without errors or warnings. Dynamic authentication navbar items, login redirection, and user initial display are implemented. Personalization and translation features are intact, and problematic swizzled theme files have been removed, allowing Docusaurus defaults. Deprecated markdown link configurations are migrated. The primary remaining task is user verification of frontend functionality in their browser.
+- **Phase 2: Full-Stack Todo Application**
+    - The full-stack Todo application, consisting of a Next.js frontend and a FastAPI backend, has been successfully reviewed and restructured.
+    - The `Phase-2/UI-UX.md` file was removed and a comprehensive `Phase-2/README.md` was created, detailing both frontend and backend components and providing startup instructions.
+
 ## Project History
+
 
 - **Project Initialization:**
     - Set up the project structure with central planning documents (`central-plan.md`, `central-tasks.md`, `central-implementation.md`).
