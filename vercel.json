@@ -1,0 +1,22 @@
+{
+  "builds": [
+    {
+      "src": "Phase-2/frontend/next.config.ts",
+      "use": "@vercel/next"
+    },
+    {
+      "src": "Phase-2/frontend/app/api/[...slug]/route.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/Phase-2/frontend/app/api/[...slug]/route.py"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/Phase-2/frontend/next.config.ts"
+    }
+  ]
+}
