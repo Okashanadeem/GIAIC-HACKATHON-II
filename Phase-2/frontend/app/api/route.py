@@ -4,9 +4,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlmodel import Session, select, SQLModel
 
-from database import engine, get_session
-from models import Task, TaskCreate, TaskRead, TaskUpdate, User, UserCreate, Token
-from security import (
+from .database import engine, get_session
+from .models import Task, TaskCreate, TaskRead, TaskUpdate, User, UserCreate, Token
+from .security import (
     create_access_token,
     get_password_hash,
     verify_password,
@@ -50,17 +50,28 @@ async def login_for_access_token(
     form_data: OAuth2PasswordRequestForm = Depends(),
     session: Session = Depends(get_session)
 ):
+    print(f"--- Attempting login for user: {form_data.username} ---")
     user = session.exec(
         select(User).where(User.username == form_data.username)
     ).first()
 
-    if not user or not verify_password(form_data.password, user.hashed_password):
+    if not user:
+        print("--- User not found in database. ---")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect username or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
 
+    if not verify_password(form_data.password, user.hashed_password):
+        print("--- Password verification failed. ---")
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect username or password",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    
+    print("--- Login successful, creating token. ---")
     expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
         data={"sub": user.username},

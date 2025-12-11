@@ -23,7 +23,7 @@ Our strategy is to follow an iterative and incremental development process, stri
 The architecture will evolve with each phase.
 
 *   **Phase I:** A simple, single-tier console application.
-*   **Phase II:** A two-tier web application with a frontend, a backend, and a database.
+-   **Phase II:** A full-stack web application built with Next.js. The FastAPI backend is integrated directly into the Next.js project as serverless functions, deployed as a single unit on Vercel. It connects to a Neon DB database. (Completed)
 *   **Phase III:** A three-tier architecture with a frontend, a backend that includes an AI agent, and a database.
 *   **Phase IV & V:** A microservices-based architecture, containerized and deployed on Kubernetes.
 

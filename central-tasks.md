@@ -21,6 +21,7 @@ This document outlines the central tasks for the "Evolution of Todo" hackathon p
 *   [x] **Task 2.6:** Implement the frontend interface using Next.js.
 *   [x] **Task 2.7:** Integrate the frontend with the backend API.
 *   [x] **Task 2.8:** Verify that the web application meets all the requirements for Phase II.
+*   [x] **Task 2.9:** Refactor the project to integrate the FastAPI backend into the Next.js project's `app/api` directory for seamless Vercel deployment.
 
 ## Phase III: AI-Powered Todo Chatbot
 

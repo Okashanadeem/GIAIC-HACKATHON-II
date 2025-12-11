@@ -9,8 +9,8 @@ from passlib.context import CryptContext
 from dotenv import load_dotenv
 from sqlmodel import Session, select
 
-from database import get_session
-from models import User, TokenData
+from .database import get_session
+from .models import User, TokenData
 
 load_dotenv()
 

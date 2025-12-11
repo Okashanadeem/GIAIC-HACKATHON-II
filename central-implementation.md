@@ -29,9 +29,8 @@ The SDD workflow will be as follows:
 The project will follow a monorepo structure, as recommended in the hackathon documentation.
 
 *   `/specs`: Contains all the specification files, organized by type (features, api, database, ui).
-*   `/frontend`: Contains the Next.js application.
-*   `/backend`: Contains the FastAPI application.
-*   `/GEMINI.md`: Root instructions for Gemini CLI, with specific `GEMINI.md` files in the `frontend` and `backend` directories.
+*   `Phase-2/frontend`: Contains the consolidated Next.js application, which now includes the FastAPI backend as serverless functions within the `app/api` directory.
+*   `/GEMINI.md`: Root instructions for Gemini CLI.
 *   `Phase-X`: Each phase will have its own directory containing phase-specific plans, tasks, and implementation details.
 
 ## 4. Quality and Acceptance
