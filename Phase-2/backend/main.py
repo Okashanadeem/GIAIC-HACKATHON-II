@@ -45,7 +45,7 @@ def on_startup():
 # ---------------------------
 # AUTHENTICATION
 # ---------------------------
-@app.post("/api/token", response_model=Token)
+@app.post("/token", response_model=Token)
 async def login_for_access_token(
     form_data: OAuth2PasswordRequestForm = Depends(),
     session: Session = Depends(get_session)
@@ -72,7 +72,7 @@ async def login_for_access_token(
 # ---------------------------
 # USERS
 # ---------------------------
-@app.post("/api/users", response_model=User)
+@app.post("/users", response_model=User)
 def create_user(user: UserCreate, session: Session = Depends(get_session)):
     hashed_password = get_password_hash(user.password)
     db_user = User(username=user.username, hashed_password=hashed_password)
@@ -84,7 +84,7 @@ def create_user(user: UserCreate, session: Session = Depends(get_session)):
 # ---------------------------
 # TASKS CRUD
 # ---------------------------
-@app.get("/api/tasks", response_model=list[TaskRead])
+@app.get("/tasks", response_model=list[TaskRead])
 def read_tasks(
     current_user: User = Depends(get_current_user),
     session: Session = Depends(get_session)
@@ -94,7 +94,7 @@ def read_tasks(
     ).all()
     return tasks
 
-@app.post("/api/tasks", response_model=TaskRead)
+@app.post("/tasks", response_model=TaskRead)
 def create_task(
     task: TaskCreate,
     current_user: User = Depends(get_current_user),
@@ -106,7 +106,7 @@ def create_task(
     session.refresh(db_task)
     return db_task
 
-@app.get("/api/tasks/{task_id}", response_model=TaskRead)
+@app.get("/tasks/{task_id}", response_model=TaskRead)
 def read_task(
     task_id: int,
     current_user: User = Depends(get_current_user),
@@ -117,7 +117,7 @@ def read_task(
         raise HTTPException(status_code=404, detail="Task not found")
     return task
 
-@app.put("/api/tasks/{task_id}", response_model=TaskRead)
+@app.put("/tasks/{task_id}", response_model=TaskRead)
 def update_task(
     task_id: int,
     task: TaskUpdate,
@@ -136,7 +136,7 @@ def update_task(
     session.refresh(db_task)
     return db_task
 
-@app.delete("/api/tasks/{task_id}")
+@app.delete("/tasks/{task_id}")
 def delete_task(
     task_id: int,
     current_user: User = Depends(get_current_user),
