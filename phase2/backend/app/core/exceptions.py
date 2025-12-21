@@ -1,10 +1,51 @@
 """Custom exceptions and RFC 7807 exception handlers for FastAPI."""
 
+import os
+from typing import Any
+
 from fastapi import FastAPI, Request
-from fastapi.exceptions import RequestValidationError
+from fastapi.exceptions import HTTPException, RequestValidationError
 from fastapi.responses import JSONResponse
 
 from app.schemas.error import ProblemDetail, ValidationErrorDetail, ValidationErrorItem
+
+
+def _get_cors_headers(request: Request | None = None) -> dict[str, str]:
+    """Get CORS headers to include in error responses.
+
+    This ensures CORS headers are present even in error responses,
+    preventing browsers from blocking error details.
+
+    Args:
+        request: Optional request object to get Origin header from.
+
+    Returns:
+        Dictionary of CORS headers.
+    """
+    # Get allowed origins from environment or use defaults
+    cors_origins_env = os.environ.get("CORS_ORIGINS", "")
+    if cors_origins_env:
+        allowed_origins = [origin.strip() for origin in cors_origins_env.split(",")]
+    else:
+        allowed_origins = [
+            "http://localhost:3000",
+            "http://127.0.0.1:3000",
+            "https://giaic-q4-h2-p2.vercel.app",
+        ]
+
+    # Try to match the request origin with allowed origins
+    origin_to_use = allowed_origins[0] if allowed_origins else "*"
+    if request:
+        request_origin = request.headers.get("origin")
+        if request_origin and request_origin in allowed_origins:
+            origin_to_use = request_origin
+
+    return {
+        "Access-Control-Allow-Origin": origin_to_use,
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Authorization, Content-Type",
+    }
 
 
 class AuthenticationError(Exception):
@@ -41,6 +82,7 @@ async def authentication_error_handler(
     return JSONResponse(
         status_code=401,
         content=problem.model_dump(exclude_none=True),
+        headers=_get_cors_headers(request),
     )
 
 
@@ -62,6 +104,7 @@ async def task_not_found_handler(
     return JSONResponse(
         status_code=404,
         content=problem.model_dump(exclude_none=True),
+        headers=_get_cors_headers(request),
     )
 
 
@@ -92,6 +135,30 @@ async def validation_error_handler(
     return JSONResponse(
         status_code=422,
         content=problem.model_dump(exclude_none=True),
+        headers=_get_cors_headers(request),
+    )
+
+
+async def http_exception_handler(
+    request: Request, exc: HTTPException
+) -> JSONResponse:
+    """Handle FastAPI HTTPException with RFC 7807 response and CORS headers.
+
+    This is critical for CORS - HTTPException without CORS headers will be blocked.
+
+    Returns HTTPException status code with ProblemDetail body.
+    """
+    problem = ProblemDetail(
+        type="about:blank",
+        title=exc.__class__.__name__,
+        status=exc.status_code,
+        detail=exc.detail,
+        instance=str(request.url.path),
+    )
+    return JSONResponse(
+        status_code=exc.status_code,
+        content=problem.model_dump(exclude_none=True),
+        headers=_get_cors_headers(request),
     )
 
 
@@ -112,17 +179,26 @@ async def generic_exception_handler(
     return JSONResponse(
         status_code=500,
         content=problem.model_dump(exclude_none=True),
+        headers=_get_cors_headers(request),
     )
 
 
 def register_exception_handlers(app: FastAPI) -> None:
     """Register all exception handlers with the FastAPI app.
 
+    IMPORTANT: HTTPException handler is registered to ensure CORS headers
+    are included in error responses, preventing CORS blocking in browser.
+
     Args:
         app: FastAPI application instance
     """
+    # Register HTTPException handler FIRST - this is critical for CORS
+    app.add_exception_handler(HTTPException, http_exception_handler)
+
+    # Register custom exception handlers
     app.add_exception_handler(AuthenticationError, authentication_error_handler)
     app.add_exception_handler(TaskNotFoundError, task_not_found_handler)
     app.add_exception_handler(RequestValidationError, validation_error_handler)
+
     # Optionally add generic handler for production
     # app.add_exception_handler(Exception, generic_exception_handler)
