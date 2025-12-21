@@ -43,11 +43,18 @@ register_exception_handlers(app)
 
 # CORS middleware for frontend
 # Allow localhost for development and Vercel for production
-CORS_ORIGINS = [
-    "http://localhost:3000",  # Next.js dev server
-    "http://127.0.0.1:3000",
-    "https://calm-orbit-todo.vercel.app",  # Vercel production frontend
-]
+# Read from environment variable or use defaults
+cors_origins_env = os.environ.get("CORS_ORIGINS", "")
+if cors_origins_env:
+    # Parse comma-separated list from environment
+    CORS_ORIGINS = [origin.strip() for origin in cors_origins_env.split(",")]
+else:
+    # Default origins for development
+    CORS_ORIGINS = [
+        "http://localhost:3000",  # Next.js dev server
+        "http://127.0.0.1:3000",
+        "https://giaic-q4-h2-p2.vercel.app",  # Vercel production frontend
+    ]
 
 app.add_middleware(
     CORSMiddleware,
