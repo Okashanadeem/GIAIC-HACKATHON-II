@@ -163,7 +163,7 @@ async def http_exception_handler(
 
 
 async def generic_exception_handler(
-    request: Request, exc: Exception
+    request: Request, exc: BaseException
 ) -> JSONResponse:
     """Handle unexpected exceptions with RFC 7807 response.
 
@@ -200,5 +200,6 @@ def register_exception_handlers(app: FastAPI) -> None:
     app.add_exception_handler(TaskNotFoundError, task_not_found_handler)
     app.add_exception_handler(RequestValidationError, validation_error_handler)
 
-    # Optionally add generic handler for production
-    # app.add_exception_handler(Exception, generic_exception_handler)
+    # Register generic exception handler for CORS on ALL unhandled exceptions
+    # This is critical for serverless environments where unexpected errors can occur
+    app.add_exception_handler(Exception, generic_exception_handler)

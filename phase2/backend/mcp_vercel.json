@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "mcp_server_main.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "50mb",
+        "runtime": "python3.12"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "mcp_server_main.py"
+    }
+  ],
+  "functions": {
+    "mcp_server_main.py": {
+      "runtime": "python3.12",
+      "maxDuration": 60
+    }
+  }
+}

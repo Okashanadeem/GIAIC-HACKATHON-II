@@ -31,9 +31,13 @@ set_tracing_disabled(disabled=True)
 
 # MCP Server URL - points to the /mcp/mcp endpoint mounted in FastAPI
 # Note: streamable_http_app() mounts internally at /mcp, so full path is /mcp/mcp
-# Production: https://hackathone-2-gamma.vercel.app/mcp/mcp
+# Production: Set via environment variable to your deployed MCP server URL
 # Development: http://localhost:8000/mcp/mcp
-MCP_SERVER_URL = os.environ.get("MCP_SERVER_URL", "https://hackathone-2-gamma.vercel.app/mcp/mcp")
+# Fallback: https://your-mcp-project.vercel.app/mcp/mcp (when using separate MCP deployment)
+MCP_SERVER_URL = os.environ.get(
+    "MCP_SERVER_URL",
+    "https://hackathone-2-gamma.vercel.app/mcp/mcp"
+)
 
 
 def get_agent_instructions(user_id: str) -> str:
